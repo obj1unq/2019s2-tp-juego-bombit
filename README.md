@@ -6,10 +6,8 @@
 
 Integrantes:
 
-- Juana Azurduy
-- Alicia Moreau
-- Joe Balachi
-- Benedict Arnold
+- Gattone Maria de los Angeles
+- Romano Jeremias 
 
 #### Descripción e instrucciones
 
