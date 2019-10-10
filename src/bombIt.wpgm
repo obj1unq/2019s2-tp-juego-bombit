@@ -1,0 +1,13 @@
+import wollok.game.*
+import niveles.*
+import personajes.*
+import extras.*
+
+program bombIt {
+	game.title("Bomb It")
+	game.height(10)
+	game.width(10)
+	game.boardGround("fondo.png")
+	nivel1.iniciar()
+	game.start()
+}
