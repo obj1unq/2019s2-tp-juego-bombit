@@ -8,9 +8,10 @@ object jugador {
   var orientacion = derecha //debemos inicializarla con la orientación a la que empieza viendo el jugador.
                             //podría resolverse sin guardar la orientación en una variable, 
 			    //y pasándole la orientación como parámetro al método actualizarImagen().
-
+  var imagen = "parado.png"
+  
   method position() = game.at(0,0)
-  method image() = "parado.png"
+  method image() = imagen
   
   method mover( posicion, unaOrientacion ) { 
     orientacion = unaOrientacion 
