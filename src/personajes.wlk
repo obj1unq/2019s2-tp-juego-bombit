@@ -10,6 +10,7 @@ object jugador {
 			    //y pasándole la orientación como parámetro al método actualizarImagen().
   
   var property position = game.at(0,0)
+  
   var imagen = "parado.png" 
   
   method image()= imagen
@@ -21,8 +22,8 @@ object jugador {
  
   method mover( posicion, unaOrientacion ) { 
     orientacion = unaOrientacion
+	self.actualizarImagen()
     if( self.puedeMoverAl( unaOrientacion )) { 
-    	self.actualizarImagen()
     	position = posicion
     }
     else {
@@ -31,7 +32,7 @@ object jugador {
   
   method actualizarImagen() {
     imagen = orientacion.imagenDelJugador()
-		game.addVisual(self)
+	game.addVisual(self)
   }
   
 }
