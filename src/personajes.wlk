@@ -10,13 +10,9 @@ object jugador {
 			    //y pasándole la orientación como parámetro al método actualizarImagen().
   
   var property position = game.at(0,0)
+  var imagen = "parado.png" 
   
-  method image(){
-  		return if ( orientacion == derecha.orientacion() ) "derecha.png"
-  			   else if 	( orientacion == izquierda.orientacion()) "izq.png"
-  			   else if ( orientacion == arriba.orientacion()) "espalda.png"
-  			   else "parado.png" 
-  	}
+  method image()= imagen
   
    method puedeMoverAl( unaOrientacion ) {
   	return 
@@ -26,39 +22,37 @@ object jugador {
   method mover( posicion, unaOrientacion ) { 
     orientacion = unaOrientacion
     if( self.puedeMoverAl( unaOrientacion )) { 
+    	self.actualizarImagen()
     	position = posicion
     }
     else {
     }
   }
   
+  method actualizarImagen() {
+    imagen = orientacion.imagenDelJugador()
+		game.addVisual(self)
+  }
+  
 }
  
 object arriba {
-	method orientacion(){ 
-		return self
-	}	
+  method imagenDelJugador() = "espalda.png"
   method posicionEnEsaDireccion() = jugador.position().up(1)
 }
 
 object abajo {
-	method orientacion(){ 
-		return self
-	}	
+  method imagenDelJugador() = "parado.png" 
   method posicionEnEsaDireccion() = jugador.position().down(1)
 
 }
 
 object izquierda {
-	method orientacion(){ 
-		return self
-	}	
+  method imagenDelJugador() = "izq.png"
   method posicionEnEsaDireccion() = jugador.position().left(1)
 }
 
 object derecha {
-  	method orientacion(){ 
-		return self
-	}	
+  method imagenDelJugador() = "derecha.png"
   method posicionEnEsaDireccion() = jugador.position().right(1)
 }

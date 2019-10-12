@@ -7,6 +7,8 @@ object bomba{
 
 
 object muro{
-   var property position = game.at(7, 8)
+   var property position = game.at(0, 1)
 	method image() = "muro.png "
+	
+	method esAtravesable() = false
 }
