@@ -5,49 +5,60 @@ import niveles.*
 
 object jugador {
   
-  var orientacion = derecha //debemos inicializarla con la orientación a la que empieza viendo el jugador.
+  var property orientacion = arriba //debemos inicializarla con la orientación a la que empieza viendo el jugador.
                             //podría resolverse sin guardar la orientación en una variable, 
 			    //y pasándole la orientación como parámetro al método actualizarImagen().
-  var imagen = "parado.png"
   
-  method position() = game.at(0,0)
-  method image() = imagen
+  var property position = game.at(0,0)
   
-  method mover( posicion, unaOrientacion ) { 
-    orientacion = unaOrientacion 
-    self.actualizarImagen() 
-    if( self.puedeMoverAl( unaOrientacion )) { }
-    else {}
-  }
+  method image(){
+  		return if ( orientacion == derecha.orientacion() ) "derecha.png"
+  			   else if 	( orientacion == izquierda.orientacion()) "izq.png"
+  			   else if ( orientacion == arriba.orientacion()) "espalda.png"
+  			   else "parado.png" 
+  	}
   
-  method actualizarImagen() {
-    imagen = orientacion.imagenDelJugador()
-	game.addVisual(self)
-  }
-  
-  method puedeMoverAl( unaOrientacion ) {
+   method puedeMoverAl( unaOrientacion ) {
   	return 
     game.getObjectsIn( unaOrientacion.posicionEnEsaDireccion() ).all { unObj => unObj.esAtravesable() }
 	}
+ 
+  method mover( posicion, unaOrientacion ) { 
+    orientacion = unaOrientacion
+    if( self.puedeMoverAl( unaOrientacion )) { 
+    	position = posicion
+    }
+    else {
+    }
+  }
   
 }
-
+ 
 object arriba {
-  method imagenDelJugador() = "espalda.png"
+	method orientacion(){ 
+		return self
+	}	
   method posicionEnEsaDireccion() = jugador.position().up(1)
 }
 
 object abajo {
-  method imagenDelJugador() = "parado.png"
+	method orientacion(){ 
+		return self
+	}	
   method posicionEnEsaDireccion() = jugador.position().down(1)
+
 }
 
 object izquierda {
-  method imagenDelJugador() = "izq.png"
+	method orientacion(){ 
+		return self
+	}	
   method posicionEnEsaDireccion() = jugador.position().left(1)
 }
 
 object derecha {
-  method imagenDelJugador() = "derecha.png"
+  	method orientacion(){ 
+		return self
+	}	
   method posicionEnEsaDireccion() = jugador.position().right(1)
 }
