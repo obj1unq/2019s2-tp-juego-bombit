@@ -5,13 +5,11 @@ import niveles.*
 
 object jugador {
   
-  var property orientacion = arriba //debemos inicializarla con la orientación a la que empieza viendo el jugador.
-                            //podría resolverse sin guardar la orientación en una variable, 
-			    //y pasándole la orientación como parámetro al método actualizarImagen().
-  
+  var property orientacion = arriba_trump
+  var property monedas = 0 
   var property position = game.at(0,0)
   
-  var imagen = "parado.png" 
+  var imagen = "trump/parado.png" 
   
   method image()= imagen
   
@@ -31,29 +29,35 @@ object jugador {
   }
   
   method actualizarImagen() {
+    game.removeVisual(self)
     imagen = orientacion.imagenDelJugador()
 	game.addVisual(self)
   }
   
+  method recolectar(moneda){
+  	monedas =+ 1
+  	game.removeVisual(moneda)
+  }
 }
  
-object arriba {
-  method imagenDelJugador() = "espalda.png"
+object arriba_trump {
+  method imagenDelJugador() = "trump/espalda.png"
   method posicionEnEsaDireccion() = jugador.position().up(1)
 }
 
-object abajo {
-  method imagenDelJugador() = "parado.png" 
+object abajo_trump{
+  method imagenDelJugador() = "trump/parado.png" 
   method posicionEnEsaDireccion() = jugador.position().down(1)
 
 }
 
-object izquierda {
-  method imagenDelJugador() = "izq.png"
+object izquierda_trump{
+  method imagenDelJugador() = "trump/izq.png"
   method posicionEnEsaDireccion() = jugador.position().left(1)
 }
 
-object derecha {
-  method imagenDelJugador() = "derecha.png"
+object derecha_trump {
+  method imagenDelJugador() = "trump/derecha.png"
   method posicionEnEsaDireccion() = jugador.position().right(1)
 }
+
