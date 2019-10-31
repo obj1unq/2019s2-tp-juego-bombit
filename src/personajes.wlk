@@ -35,7 +35,7 @@ object jugador {
   }
   
   method recolectar(moneda){
-  	monedas =+ 1
+  	self.monedas( monedas + 1) 
   	game.removeVisual(moneda)
   }
 }
