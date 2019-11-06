@@ -5,8 +5,8 @@ import extras.*
 
 program bombIt {
 	game.title("Bomb It")
-	game.height(8)
-	game.width(8)
+	game.height(20)
+	game.width(40)
 	game.boardGround("fondo.png")
 	nivel1.iniciar()
 	game.start()
