@@ -7,7 +7,8 @@ object jugador {
   
   var property orientacion = arriba_trump
   var property monedas = 0 
-  var property position = game.at(0,0)
+  var property position = game.at(1,1)
+  var property tienePoder = false
   
   var imagen = "trump/parado.png" 
   
@@ -37,6 +38,15 @@ object jugador {
   method recolectar(moneda){
   	self.monedas( monedas + 1) 
   	game.removeVisual(moneda)
+  }
+  
+  method agarrarPoder() {
+  	tienePoder = true
+	game.removeVisual(powerUpBomba)
+  }
+  
+  method explotar() {
+  	
   }
 }
  

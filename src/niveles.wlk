@@ -1,6 +1,7 @@
 import extras.*
 import wollok.game.*
 import personajes.*
+import muro.*
 
 object nivel1 {
 	method iniciar() {
@@ -8,7 +9,7 @@ object nivel1 {
 		game.addVisual(moneda)
 		game.addVisualCharacter(jugador)
 		config.configurarTeclas()
-
+		game.addVisual(pared)
 	}
 }
 
