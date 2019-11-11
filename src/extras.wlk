@@ -32,40 +32,17 @@ class Explosion {
 		self.existe()
 		game.whenCollideDo(self, { alguien => alguien.explotar() })
 		
-		const exploN = new ExplosionNorte()
-		if(exploN.hayLugar(position.up(1))){
-	    exploN.existe()
-		game.addVisualIn(exploN, position.up(1))
-		game.whenCollideDo(exploN, { alguien => alguien.explotar() })	
+		const explosionN = new ExplosionNorte()
+		if(explosionN.hayLugar(position.up(1))){
+	    explosionN.existe()
+		game.addVisualIn(explosionN, position.up(1))
+		game.whenCollideDo(explosionN, { alguien => alguien.explotar() })	
 		}
 		
-		const exploS = new ExplosionSur()
-		if(exploS.hayLugar(position.down(1))){
-	    exploS.existe()
-		game.addVisualIn(exploS, position.down(1))
-		game.whenCollideDo(exploS, { alguien => alguien.explotar() })
-		}
-		
-		const exploE = new ExplosionEste()
-		if(exploE.hayLugar(position.right(1))){
-		exploE.existe()
-		game.addVisualIn(exploE, position.right(1))
-		game.whenCollideDo(exploE, { alguien => alguien.explotar() })
-		}
-		
-		const exploO = new ExplosionOeste()
-		if(exploO.hayLugar(position.left(1))){
-		exploO.existe()
-		game.addVisualIn(exploO, position.left(1))
-		game.whenCollideDo(exploO, { alguien => alguien.explotar() })
-		}
 		
 		game.onTick(500, "sacarExplosion", {	
 		self.finExplosion()
-		exploN.finExplosion()
-		exploS.finExplosion()
-		exploE.finExplosion()
-		exploO.finExplosion()
+		explosionN.finExplosion())
 			game.removeTickEvent("sacarExplosion")
 		})
 	}
