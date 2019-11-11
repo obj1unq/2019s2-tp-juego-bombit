@@ -2,31 +2,24 @@ import wollok.game.*
 import personajes.*
 
 class Bomba {
-	
 	var property danio = 20
-	
 	method imagen() = "bomba.png"
-	
 	method explotar(position){
 		game.removeVisual(self)
 		self.detonar(position)
 	}
-
 	method detonar(position){
 		const explosion = new Explosion()
 		//if (jugador.tienePoder()) { explosion.explotarPowerUp(position) } else { explosion.explotar(position) }
 		explosion.explotar(position)
 	} 	
-	
 	method esAtravesable() = false	
-	
 }
 
 object powerUpBomba{
 	var property position = game.at(10,3)
 	method imagen() = "misil.png"
-	method esPowerUp() = true
-	
+	method esPowerUp() = true	
 }
 
 class Explosion {
@@ -50,12 +43,10 @@ class Explosion {
 			)
 		}
 
-
 	method hayLugar( unaOrientacion ) {
   		return 
     	game.getObjectsIn( unaOrientacion ).all { unObj => unObj.esAtravesable() }
 	}
-
 }
 
 class ExplosionNorte inherits Explosion {
@@ -96,7 +87,6 @@ object muro{
 	method esAtravesable() = false
 	method esPowerUp() = false
 }
-
  
 object bomba{
 	var property danio = 20
@@ -104,3 +94,7 @@ object bomba{
 	method esMoneda(){ return false}
 }
 
+object inicio{
+	var property position = game.at(0,0)
+	method image() = "inicio.jpg"
+}
