@@ -41,7 +41,7 @@ object jugador {
   	game.removeVisual(moneda)
   }
   
-  method agarrarPoder() {
+  method agarrarPoder(poder) {
   	self.tienePoder(true) 
 	game.removeVisual(powerUpBomba)
   }
