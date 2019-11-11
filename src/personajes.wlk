@@ -41,7 +41,6 @@ object jugador {
   }
   
   method agarrarPoder() {
-  	tienePoder = true
 	game.removeVisual(powerUpBomba)
   }
   

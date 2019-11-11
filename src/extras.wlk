@@ -21,14 +21,17 @@ class Bomba {
 }
 
 object powerUpBomba{
-	method imagen() = "misil.jpg"
+	var property position = game.at(10,3)
+	method imagen() = "misil.png"
+	method esPowerUp() = true
+	
 }
 
 class Explosion {
 	var hayFuego = false
 	method image()= "ExplosionCentro.png"
 	method existe() { hayFuego = not hayFuego }
-	
+	method esPowerUp()= false 
 	method explotar(position){
 		game.addVisualIn(self, position)
 		self.existe()
@@ -76,32 +79,12 @@ class ExplosionEsteOeste inherits Explosion {
 	override method image() = "CuerpoExplosionOesteEste.png"
 }
 
-
-object powerUp{
-	method image()= "PowerUp.png"
-	
-	method position()= game.at(7,7)
-    
-    method agarrarPoder(){
-       jugador.agarrarPoder()
-    }
-
-
-
-
-}
-/* 
-object bomba{
-	var property danio = 20
-	method image() = "bomba.png"
-	method esMoneda(){ return false}
-}*/
-
-
 object moneda{
 	var property position = game.at(1,5)
 	method image() = "moneda.png"
 	method esMoneda(){ return true}
+	method esAtravesable() = true
+	method esPowerUp() = false
 }
 
 object muro{
@@ -109,4 +92,13 @@ object muro{
 	method image() = "muro.png "
 	method esMoneda(){ return false}
 	method esAtravesable() = false
+	method esPowerUp() = false
 }
+
+/* 
+object bomba{
+	var property danio = 20
+	method image() = "bomba.png"
+	method esMoneda(){ return false}
+}*/
+
