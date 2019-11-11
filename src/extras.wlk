@@ -14,17 +14,19 @@ class Bomba {
 
 	method detonar(position){
 		const explosion = new Explosion()
-		if (jugador.tienePoder()) { explosion.explotarPowerUp(position) } else { explosion.explotar(position) }
+		//if (jugador.tienePoder()) { explosion.explotarPowerUp(position) } else { explosion.explotar(position) }
+		explosion.explotar(position)
 	} 		
 	
 }
 
+object powerUpBomba{
+	method imagen() = "misil.jpg"
+}
+
 class Explosion {
-	
+	var hayFuego = false
 	method image()= "ExplosionCentro.png"
- 
-    var hayFuego = false
-   
 	method existe() { hayFuego = not hayFuego }
 	
 	method explotar(position){
@@ -34,18 +36,21 @@ class Explosion {
 		
 		const explosionN = new ExplosionNorte()
 		if(explosionN.hayLugar(position.up(1))){
-	    explosionN.existe()
-		game.addVisualIn(explosionN, position.up(1))
-		game.whenCollideDo(explosionN, { alguien => alguien.explotar() })	
+	    	explosionN.existe()
+			game.addVisualIn(explosionN, position.up(1))
+			game.whenCollideDo(explosionN, { alguien => alguien.explotar() })	
 		}
-		
-		
 		game.onTick(500, "sacarExplosion", {	
-		self.finExplosion()
-		explosionN.finExplosion())
-			game.removeTickEvent("sacarExplosion")
-		})
+			game.removeTickEvent("sacarExplosion")}
+			)
+		}
+
+
+	method hayLugar( unaOrientacion ) {
+  		return 
+    	game.getObjectsIn( unaOrientacion ).all { unObj => unObj.esAtravesable() }
 	}
+
 }
 
 class ExplosionNorte inherits Explosion {
@@ -81,12 +86,17 @@ object powerUp{
        jugador.agarrarPoder()
     }
 
+
+
+
+}
 /* 
 object bomba{
 	var property danio = 20
 	method image() = "bomba.png"
 	method esMoneda(){ return false}
 }*/
+
 
 object moneda{
 	var property position = game.at(1,5)
