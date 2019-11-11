@@ -10,7 +10,6 @@ object nivel1 {
 		game.addVisual(powerUpBomba)
 		game.addVisualCharacter(jugador)
 		config.configurarTeclas()
-
 	}
 }
 
@@ -23,6 +22,7 @@ object config {
 		  keyboard.right().onPressDo { jugador.mover(jugador.position().right(1), derecha_trump) }
 		  keyboard.m().onPressDo({ if (game.uniqueCollider(jugador).esMoneda() )jugador.recolectar(game.uniqueCollider(jugador))})
 		  keyboard.n().onPressDo({ if (game.uniqueCollider(jugador).esPowerUp() )jugador.agarrarPoder()})
+		  keyboard.b().onPressDo({ if (jugador.bombas() > 0 )jugador.ponerBomba()})
 		  	
 	}
 }

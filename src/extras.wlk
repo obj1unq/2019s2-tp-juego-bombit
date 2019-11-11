@@ -16,7 +16,9 @@ class Bomba {
 		const explosion = new Explosion()
 		//if (jugador.tienePoder()) { explosion.explotarPowerUp(position) } else { explosion.explotar(position) }
 		explosion.explotar(position)
-	} 		
+	} 	
+	
+	method esAtravesable() = false	
 	
 }
 
@@ -95,10 +97,10 @@ object muro{
 	method esPowerUp() = false
 }
 
-/* 
+ 
 object bomba{
 	var property danio = 20
 	method image() = "bomba.png"
 	method esMoneda(){ return false}
-}*/
+}
 

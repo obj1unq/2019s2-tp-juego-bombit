@@ -6,7 +6,8 @@ import niveles.*
 object jugador {
   
   var property orientacion = arriba_trump
-  var property monedas = 0 
+  var property monedas = 0
+  var property bombas = 5 
   var property position = game.at(1,1)
   var property tienePoder = false
   
@@ -41,12 +42,19 @@ object jugador {
   }
   
   method agarrarPoder() {
+  	self.tienePoder(true) 
 	game.removeVisual(powerUpBomba)
   }
   
   method explotar() {
   	
   }
+  
+  method ponerBomba(){
+  	game.addVisualIn(new Bomba(), position)
+  	self.bombas( bombas - 1)
+  }
+  
 }
  
 object arriba_trump {
