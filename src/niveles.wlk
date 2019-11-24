@@ -11,6 +11,7 @@ object nivel1 {
 		game.addVisualCharacter(jugador)
 		game.addVisual(inicio)
 		config.configurarTeclas()
+		config.configurarColisiones()
 	}
 }
 
@@ -24,6 +25,10 @@ object config {
 		  keyboard.m().onPressDo({ if (game.uniqueCollider(jugador).esMoneda() )jugador.recolectar(game.uniqueCollider(jugador))})
 		  keyboard.space().onPressDo({ game.removeVisual(inicio)})
 		  	
+	}
+	
+	method configurarColisiones() {
+		game.onCollideDo(jugador, { algo => algo.teEncontro(jugador)})
 	}
 }
 

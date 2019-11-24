@@ -6,6 +6,9 @@ object moneda{
 	method image() = "moneda.png"
 	method esMoneda(){ return true}
 	method esAtravesable() = true
+	method teEncontro(trump){
+		
+	} 
 }
 
 object inicio{

@@ -34,13 +34,9 @@ object jugador {
   	game.removeVisual(moneda)
   }
   
-  
-  method explotar() {
-  	
-  }
-  
+  method teEncontro(){ }
 }
- 
+
 object arriba_trump {
   method imagenDelJugador() = "trump/espalda.png"
   method posicionEnEsaDireccion() = jugador.position().up(1)
@@ -63,8 +59,11 @@ object derecha_trump {
 }
 
 object kim{
-	var property position = game.at(18,16)
+	var property position = game.at(18,18)
 	method image() = "kim/parado.png" 
-	
-}
+	method teEncontro(trump){ 
+  		game.say(jugador, "Conquiste")
+		game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
+  	}
+  } 
 
