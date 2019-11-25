@@ -31,13 +31,13 @@ object misil{
 	}
 	
 	method teEncontro(trump){
+		trump.position(game.at(1,1) )
 		if ( trump.vidas() > 1){
 			trump.vidas(trump.vidas() - 1)
-			game.removeVisual(trump)
-			game.addVisualIn(trump, game.at(1,1))
 		}
 		else game.say(trump, " Me quede sin vidas")
-			 game.stop()
+			 //game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
+
 	}
 }
 

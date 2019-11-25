@@ -25,7 +25,7 @@ object config {
 		  keyboard.right().onPressDo { trump.mover(trump.position().right(1), derecha_trump) }
 		  keyboard.m().onPressDo({ if (game.uniqueCollider(trump).esMoneda() )trump.recolectar(game.uniqueCollider(trump))})
 		  keyboard.space().onPressDo({ game.removeVisual(inicio)
-		  								game.onTick(200, "movimiento",{ 
+		  							   game.onTick(200, "movimiento",{ 
 		  									misil.dirigido()
 		  								})
 		  })
