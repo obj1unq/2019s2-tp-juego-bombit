@@ -8,11 +8,17 @@ object trump {
   var property monedas = 0
   var property position = game.at(1,1)
   var imagen = "trump/parado.png" 
+  
   method image()= imagen
+  
   method puedeMoverAl( unaOrientacion ) {
   return 
   game.getObjectsIn( unaOrientacion.posicionEnEsaDireccion() ).all { unObj => unObj.esAtravesable() }
   }
+	 
+ method estoyVivo(){
+ 	return vidas > 0 
+ }
  
   method mover( posicion, unaOrientacion ) { 
     orientacion = unaOrientacion

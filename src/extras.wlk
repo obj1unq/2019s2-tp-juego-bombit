@@ -30,13 +30,15 @@ object misil{
 		else position = game.at(position.x()-1,5) 
 	}
 	
+	method esAtravesable() = false  
+	
 	method teEncontro(trump){
 		trump.position(game.at(1,1) )
 		if ( trump.vidas() > 1){
 			trump.vidas(trump.vidas() - 1)
 		}
 		else game.say(trump, " Me quede sin vidas")
-			 //game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
+			 game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
 
 	}
 }

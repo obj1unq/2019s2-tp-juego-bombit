@@ -19,17 +19,16 @@ object nivel1 {
 object config {
 	method configurarTeclas() {
 		
-		  keyboard.up().onPressDo { trump.mover(trump.position().up(1), arriba_trump) }
-		  keyboard.down().onPressDo { trump.mover(trump.position().down(1), abajo_trump) }
-		  keyboard.left().onPressDo { trump.mover(trump.position().left(1), izquierda_trump) }
-		  keyboard.right().onPressDo { trump.mover(trump.position().right(1), derecha_trump) }
+		  keyboard.up().onPressDo ({ if ( trump.estoyVivo() )  trump.mover(trump.position().up(1), arriba_trump)  })
+		  keyboard.down().onPressDo ({ if ( trump.estoyVivo() ) trump.mover(trump.position().down(1), abajo_trump) })
+		  keyboard.left().onPressDo ({ if ( trump.estoyVivo() ) trump.mover(trump.position().left(1), izquierda_trump) })
+		  keyboard.right().onPressDo ({ if ( trump.estoyVivo() ) trump.mover(trump.position().right(1), derecha_trump) })
 		  keyboard.m().onPressDo({ if (game.uniqueCollider(trump).esMoneda() )trump.recolectar(game.uniqueCollider(trump))})
 		  keyboard.space().onPressDo({ game.removeVisual(inicio)
 		  							   game.onTick(200, "movimiento",{ 
 		  									misil.dirigido()
 		  								})
 		  })
-		  	
 	}
 	
 	method configurarColisiones() {
