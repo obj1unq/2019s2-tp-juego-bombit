@@ -1,6 +1,15 @@
 import wollok.game.*
 import personajes.*
 
+object kim{
+	var property position = game.at(18,18)
+	method image() = "kim/parado.png" 
+	method teEncontro(trump){ 
+  		game.say(trump, "Conquiste")
+		game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
+  	}
+  } 
+
 object moneda{
 	var property position = game.at(1,5)
 	method image() = "moneda.png"
@@ -12,19 +21,22 @@ object moneda{
 }
 
 object misil{
-	var	property position = game.at(17,2)
+	var	property position = game.at(17,5)
 	method image() = "misil.png"
 	method dirigido() {
-		position = game.at(position.x()-1,2) 
+		if ( position == trump.position() or  position == game.at(1,5) ){
+			position = game.at(17,5)
+		}
+		else position = game.at(position.x()-1,5) 
 	}
 	
 	method teEncontro(trump){
-		if ( jugador.vidas() > 1){
-			jugador.vidas(jugador.vidas() - 1)
-			game.removeVisual(jugador)
-			game.addVisualIn(jugador, game.at(1,1))
+		if ( trump.vidas() > 1){
+			trump.vidas(trump.vidas() - 1)
+			game.removeVisual(trump)
+			game.addVisualIn(trump, game.at(1,1))
 		}
-		else game.say(jugador, " Me quede sin vidas")
+		else game.say(trump, " Me quede sin vidas")
 			 game.stop()
 	}
 }
@@ -35,6 +47,6 @@ object inicio{
 }
 
 object municion{
-	var property position = game.at(18,2)
+	var property position = game.at(18,5)
 	method image() = "municion.png"
 }

@@ -2,7 +2,7 @@ import wollok.game.*
 import extras.*
 import niveles.*
 
-object jugador {
+object trump {
   var property vidas = 3  
   var property orientacion = arriba_trump
   var property monedas = 0
@@ -40,31 +40,22 @@ object jugador {
 
 object arriba_trump {
   method imagenDelJugador() = "trump/espalda.png"
-  method posicionEnEsaDireccion() = jugador.position().up(1)
+  method posicionEnEsaDireccion() = trump.position().up(1)
 }
 
 object abajo_trump{
   method imagenDelJugador() = "trump/parado.png" 
-  method posicionEnEsaDireccion() = jugador.position().down(1)
+  method posicionEnEsaDireccion() = trump.position().down(1)
 
 }
 
 object izquierda_trump{
   method imagenDelJugador() = "trump/izq.png"
-  method posicionEnEsaDireccion() = jugador.position().left(1)
+  method posicionEnEsaDireccion() = trump.position().left(1)
 }
 
 object derecha_trump {
   method imagenDelJugador() = "trump/derecha.png"
-  method posicionEnEsaDireccion() = jugador.position().right(1)
+  method posicionEnEsaDireccion() = trump.position().right(1)
 }
-
-object kim{
-	var property position = game.at(18,18)
-	method image() = "kim/parado.png" 
-	method teEncontro(trump){ 
-  		game.say(jugador, "Conquiste")
-		game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
-  	}
-  } 
 
