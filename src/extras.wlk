@@ -10,8 +10,8 @@ object kim{
   	}
   } 
 
-object moneda{
-	var property position = game.at(1,5)
+class Moneda{
+	var property position
 	method image() = "moneda.png"
 	method esMoneda(){ return true}
 	method esAtravesable() = true
@@ -38,7 +38,7 @@ object misil{
 			trump.vidas(trump.vidas() - 1)
 		}
 		else game.say(trump, " Me quede sin vidas")
-			 game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
+			 //game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
 
 	}
 }
