@@ -2,7 +2,8 @@ import wollok.game.*
 import extras.*
 import niveles.*
 
-object jugador {  
+object jugador {
+  var property vidas = 3  
   var property orientacion = arriba_trump
   var property monedas = 0
   var property position = game.at(1,1)
@@ -34,7 +35,7 @@ object jugador {
   	game.removeVisual(moneda)
   }
   
-  method teEncontro(){ }
+  method teEncontro(trump){ }
 }
 
 object arriba_trump {

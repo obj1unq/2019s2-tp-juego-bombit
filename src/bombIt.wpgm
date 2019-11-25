@@ -9,7 +9,7 @@ program bombIt {
 	game.width(20)
 	game.boardGround("fondo.png")
 	nivel1.iniciar()
-	game.start()
 	game.showAttributes(jugador)
-	game.sound('soundtrack.mp3')
+	game.start()
+	game.sound('soundtrack1 .mp3')
 }
