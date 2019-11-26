@@ -1,14 +1,15 @@
 import extras.*
 import wollok.game.*
 import personajes.*
-import muro.*
 
 object nivel1 {
 	method iniciar() {
 		game.addVisual(kim)
 		game.addVisual(misil)
-		game.addVisual(municion)
+		game.addVisualIn(new Municion() , game.at(18,5))
+		game.addVisualIn(new Municion() , game.at(18,9))	
 		game.addVisualIn(new Moneda(), game.at(1,5))
+		game.addVisualIn(new Moneda(), game.at(1,9))
 		game.addVisualIn(new Moneda(), game.at(7,9))
 		game.addVisualCharacter(trump)
 		game.addVisual(inicio)

@@ -27,8 +27,8 @@ class Moneda{
 
 //Representación de los lanzamisiles representado con dos objetos: municio es estatico, misil es el objeto que se mueve.
 
-object municion{
-	var property position = game.at(18,5)
+class Municion{
+	var property position 
 	method image() = "municion.png"
 }
 
