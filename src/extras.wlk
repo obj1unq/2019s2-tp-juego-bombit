@@ -4,11 +4,10 @@ import personajes.*
 //Representacion de la llegada a la meta
 
 object kim{
-	var property position = game.at(18,18)
-	method image() = "kim/parado.png" 
+	var property position = game.at(1,7)
+	method image() = "kim/parado.png"
 	method teEncontro(trump){ 
-  		game.say(trump, "Conquiste")
-		game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
+  		game.addVisual(conquista)
   	}
   } 
 
@@ -50,6 +49,7 @@ object misil{
 			trump.vidas(trump.vidas() - 1)
 		}
 		else game.say(trump, " Me quede sin vidas")
+			 trump.estoyVivo(false)
 			 game.addVisual(fin)
 
 	}
@@ -66,5 +66,10 @@ object inicio{
 object fin{
 	var property position = game.at(0,0)
 	method image() = "fin.jpg"
+}
+
+object conquista{
+	var property position = game.at(0,0)
+	method image() = "win.jpg"
 }
 

@@ -27,7 +27,7 @@ object config {
 		  keyboard.down().onPressDo ({ if ( trump.estoyVivo() ) trump.mover(trump.position().down(1), abajo_trump) })
 		  keyboard.left().onPressDo ({ if ( trump.estoyVivo() ) trump.mover(trump.position().left(1), izquierda_trump) })
 		  keyboard.right().onPressDo ({ if ( trump.estoyVivo() ) trump.mover(trump.position().right(1), derecha_trump) })
-		  keyboard.m().onPressDo({ if (game.uniqueCollider(trump).esMoneda() )trump.recolectar(game.uniqueCollider(trump))})
+		  keyboard.m().onPressDo({ if (trump.estoyVivo() and game.uniqueCollider(trump).esMoneda() )trump.recolectar(game.uniqueCollider(trump))})
 		  
 		  
 		  //Acciones en pantalla sobre el juego
