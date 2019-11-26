@@ -1,6 +1,8 @@
 import wollok.game.*
 import personajes.*
 
+//Representacion de la llegada a la meta
+
 object kim{
 	var property position = game.at(18,18)
 	method image() = "kim/parado.png" 
@@ -10,6 +12,9 @@ object kim{
   	}
   } 
 
+
+//Representacion de monedas
+
 class Moneda{
 	var property position
 	method image() = "moneda.png"
@@ -18,6 +23,13 @@ class Moneda{
 	method teEncontro(trump){
 		
 	} 
+}
+
+//Representación de los lanzamisiles representado con dos objetos: municio es estatico, misil es el objeto que se mueve.
+
+object municion{
+	var property position = game.at(18,5)
+	method image() = "municion.png"
 }
 
 object misil{
@@ -43,6 +55,9 @@ object misil{
 	}
 }
 
+
+//Representación de las imágenes para el inicio y el fin
+
 object inicio{
 	var property position = game.at(0,0)
 	method image() = "inicio.jpg"
@@ -53,7 +68,3 @@ object fin{
 	method image() = "fin.jpg"
 }
 
-object municion{
-	var property position = game.at(18,5)
-	method image() = "municion.png"
-}

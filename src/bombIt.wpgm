@@ -4,12 +4,18 @@ import personajes.*
 import extras.*
 
 program bombIt {
+	
 	game.title("Bomb It")
+	
+	// Tamaño e imagen del fondo
 	game.height(20)
 	game.width(20)
 	game.boardGround("fondo.png")
-	nivel1.iniciar()
 	
+	//Inicia el primer nivel
+	nivel1.iniciar()
 	game.start()
+	
+	//Inicia la reproduccion de la musica de fondo
 	game.sound('soundtrack1.mp3')
 }

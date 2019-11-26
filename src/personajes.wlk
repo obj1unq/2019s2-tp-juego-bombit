@@ -44,6 +44,9 @@ object trump {
   method teEncontro(trump){ }
 }
 
+
+//Representacion de las imagenes que provocan la sensacion de movimiento/direccion
+
 object arriba_trump {
   method imagenDelJugador() = "trump/espalda.png"
   method posicionEnEsaDireccion() = trump.position().up(1)
