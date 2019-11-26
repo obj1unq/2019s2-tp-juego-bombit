@@ -38,7 +38,7 @@ object misil{
 			trump.vidas(trump.vidas() - 1)
 		}
 		else game.say(trump, " Me quede sin vidas")
-			 //game.onTick(1000, "Trump Lo Hizo Nuevamente", {game.stop()})
+			 game.addVisual(fin)
 
 	}
 }
@@ -46,6 +46,11 @@ object misil{
 object inicio{
 	var property position = game.at(0,0)
 	method image() = "inicio.jpg"
+}
+
+object fin{
+	var property position = game.at(0,0)
+	method image() = "fin.jpg"
 }
 
 object municion{

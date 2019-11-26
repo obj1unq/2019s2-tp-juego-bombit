@@ -30,6 +30,11 @@ object config {
 		  									misil.dirigido()
 		  								})
 		  })
+		  keyboard.r().onPressDo({ 
+		  				game.clear()
+		  				nivel1.iniciar()
+		  } )
+		  keyboard.enter().onPressDo( { game.stop() } )
 	}
 	
 	method configurarColisiones() {
