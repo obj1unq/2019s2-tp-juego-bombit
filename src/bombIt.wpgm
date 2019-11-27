@@ -17,5 +17,5 @@ program bombIt {
 	game.start()
 	
 	//Inicia la reproduccion de la musica de fondo
-	game.sound('soundtrack1.mp3')
+	game.sound("soundtrack1.mp3")
 }
