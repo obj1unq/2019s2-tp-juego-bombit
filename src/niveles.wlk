@@ -4,15 +4,15 @@ import personajes.*
 
 object nivel1 {
 	method iniciar() {
+		const borde = new Borde()
+		borde.generarMuros() 
 		game.addVisual(kim)
 		game.addVisual(misil)
-		game.addVisualIn(new Municion() , game.at(18,5))
-		game.addVisualIn(new Municion() , game.at(18,9))	
-		game.addVisualIn(new Moneda(), game.at(1,5))
-		game.addVisualIn(new Moneda(), game.at(1,9))
-		game.addVisualIn(new Moneda(), game.at(7,9))
+		game.addVisualIn(new Municion() , game.at(18,5))	
+		game.addVisualIn(new Moneda(), game.at(2,5))
+		game.addVisualIn(new Moneda(), game.at(12,14))
+		game.addVisualIn(new Moneda(), game.at(16,2))
 		game.addVisualCharacterIn(trump , game.at(1,1))
-		trump.estoyVivo(true)
 		game.addVisual(inicio)
 		config.configurarTeclas()
 		config.configurarColisiones()
@@ -33,15 +33,33 @@ object config {
 		  
 		  //Acciones en pantalla sobre el juego
 		 
-		  keyboard.space().onPressDo({ game.removeVisual(inicio)
-		  							   game.onTick(200, "movimiento",{ 
-		  									misil.dirigido()
-		  								})
+		 
+		 //Iniciar el juego
+		  keyboard.space().onPressDo({ if ( game.allVisuals().contains(inicio)){
+			  							   game.removeVisual(inicio)
+			  							   game.onTick(100, "movimiento",{ 
+			  									misil.dirigido()
+			  								})
+			  							   trump.iniciar()
+		  								}
 		  })
+		  
+		  //Popup de instrucciones
+		  keyboard.i().onPressDo({
+		  		game.addVisual(instrucciones)
+		  		game.schedule(5500, { 
+					game.removeVisual(instrucciones)		  			
+		  		})
+		  })
+		  
+		  //Reiniciar el juego
 		  keyboard.r().onPressDo({ 
 		  				game.clear()
 		  				nivel1.iniciar()
+		  				trump.iniciar()
 		  } )
+		  
+		  //Cerrar el juego
 		  keyboard.enter().onPressDo( { game.stop() } )
 	}
 	

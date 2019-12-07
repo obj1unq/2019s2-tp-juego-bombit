@@ -2,15 +2,28 @@ import wollok.game.*
 import extras.*
 import niveles.*
 
-object trump {
-  var property vidas = 3  
+object trump {  
   var property orientacion = arriba_trump
   var property monedas = 0
   var property position = game.at(1,1)
   var imagen = "trump/parado.png" 
-  var property estoyVivo = true
+  var property estoyVivo = false
   
   method image()= imagen
+  
+  method iniciar(){
+  	self.origen()
+  	self.monedas(0)
+  	self.estoyVivo(true)
+  }
+  
+  method origen(){
+  	position = game.at(1,1)
+  }
+  
+  method encontroTodoElDinero(){
+  	return monedas == 3
+  }
   
   method puedeMoverAl( unaOrientacion ) {
   return 
