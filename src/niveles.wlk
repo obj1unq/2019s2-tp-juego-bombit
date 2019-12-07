@@ -3,6 +3,11 @@ import wollok.game.*
 import personajes.*
 
 object nivel1 {
+	
+	method totalMonedas(){
+		return 3
+	}
+	
 	method iniciar() {
 		const borde = new Borde()
 		borde.generarMuros() 
@@ -16,6 +21,35 @@ object nivel1 {
 		game.addVisual(inicio)
 		config.configurarTeclas()
 		config.configurarColisiones()
+		trump.nivelActual(self)
+	}
+}
+
+
+object nivel2 {
+	
+	method totalMonedas(){
+		return 6
+	}
+	
+	method iniciar() {
+		game.clear()
+		const borde = new Borde()
+		borde.generarMuros() 
+		game.addVisual(kim)
+		game.addVisual(misil)
+		game.addVisualIn(new Municion() , game.at(18,5))	
+		game.addVisualIn(new Moneda(), game.at(2,5))
+		game.addVisualIn(new Moneda(), game.at(12,14))
+		game.addVisualIn(new Moneda(), game.at(16,2))
+		game.addVisualIn(new Moneda(), game.at(15,7))
+		game.addVisualIn(new Moneda(), game.at(14,14))
+		game.addVisualIn(new Moneda(), game.at(12,5))
+		game.addVisualCharacterIn(trump , game.at(1,1))
+		trump.iniciar()
+		config.configurarTeclas()
+		config.configurarColisiones()
+		trump.nivelActual(self)
 	}
 }
 
@@ -37,10 +71,14 @@ object config {
 		 //Iniciar el juego
 		  keyboard.space().onPressDo({ if ( game.allVisuals().contains(inicio)){
 			  							   game.removeVisual(inicio)
-			  							   game.onTick(100, "movimiento",{ 
-			  									misil.dirigido()
-			  								})
+			  							   self.movimientoMisil()
 			  							   trump.iniciar()
+		  								}
+		  								else if( game.allVisuals().contains(pasarNivel)){
+		  									game.removeVisual(pasarNivel)
+		  									nivel2.iniciar()
+		  									self.movimientoMisil()
+		  									trump.iniciar()
 		  								}
 		  })
 		  
@@ -65,6 +103,12 @@ object config {
 	
 	method configurarColisiones() {
 		game.onCollideDo(trump, { algo => algo.teEncontro(trump)})
+	}
+	
+	method movimientoMisil(){
+		game.onTick(100, "movimiento",{ 
+			 misil.dirigido()
+		})
 	}
 }
 

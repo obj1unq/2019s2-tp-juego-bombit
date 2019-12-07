@@ -1,5 +1,6 @@
 import wollok.game.*
 import personajes.*
+import niveles.*
 
 //Representacion de la llegada a la meta
 
@@ -9,7 +10,27 @@ object kim{
 	method esAtravesable() = true
 	method esMoneda() = false
 	method teEncontro(trump){ 
-		if ( trump.encontroTodoElDinero() ){
+		if ( trump.nivelActual() == nivel1){
+			self.pasarDeNivel()
+		}
+		else{
+			self.trumpGana()
+		}
+		
+  	}
+  	
+  	method pasarDeNivel(){
+  		if ( trump.encontroTodoElDinero() ){	
+  			game.addVisual(pasarNivel)
+		}
+		else{
+			game.say(self, "Tenes que robar toda la plata")
+  			game.say(trump, "Uh coreano me tenes harto")
+		}
+  	}
+  	
+  	method trumpGana(){
+  		if ( trump.encontroTodoElDinero() ){
   			game.addVisual(conquista)
   			game.onTick(2000, "Ganaste" ,{
   				trump.estoyVivo(false)
@@ -20,8 +41,8 @@ object kim{
   			game.say(self, "Tenes que robar toda la plata")
   			game.say(trump, "Uh coreano me tenes harto")
   		}
-  	}
-  } 
+  	}	
+} 
 
 //Representacion de los bordes del juego
 
@@ -108,5 +129,10 @@ object instrucciones{
 object conquista{
 	var property position = game.at(0,0)
 	method image() = "win.jpg"
+}
+
+object pasarNivel{
+	var property position = game.at(0,0)
+	method image() = "pasarNivel.jpg"
 }
 

@@ -2,7 +2,8 @@ import wollok.game.*
 import extras.*
 import niveles.*
 
-object trump {  
+object trump {
+  var property nivelActual
   var property orientacion = arriba_trump
   var property monedas = 0
   var property position = game.at(1,1)
@@ -22,7 +23,7 @@ object trump {
   }
   
   method encontroTodoElDinero(){
-  	return monedas == 3
+  	return monedas == self.nivelActual().totalMonedas()
   }
   
   method puedeMoverAl( unaOrientacion ) {
