@@ -38,13 +38,18 @@ object nivel2 {
 		borde.generarMuros() 
 		game.addVisual(kim)
 		game.addVisual(misil)
-		game.addVisualIn(new Municion() , game.at(18,5))	
+		game.addVisual(disparo)
+		game.addVisual(disparo2)
+		game.addVisualIn(new Soldado() , game.at(18,5))
+		game.addVisualIn(new Soldado(), game.at(18,8))
+		game.addVisualIn(new Soldado(), game.at(18,11))	
 		game.addVisualIn(new Moneda(), game.at(2,5))
 		game.addVisualIn(new Moneda(), game.at(12,14))
 		game.addVisualIn(new Moneda(), game.at(16,2))
 		game.addVisualIn(new Moneda(), game.at(15,7))
 		game.addVisualIn(new Moneda(), game.at(14,14))
-		game.addVisualIn(new Moneda(), game.at(12,5))
+		game.addVisualIn(new Moneda(), game.at(13,11))
+		game.addVisualIn(new Moneda(), game.at(9,11))
 		game.addVisualCharacterIn(trump , game.at(1,1))
 		trump.iniciar()
 		config.configurarTeclas()
@@ -78,6 +83,8 @@ object config {
 		  									game.removeVisual(pasarNivel)
 		  									nivel2.iniciar()
 		  									self.movimientoMisil()
+		  									self.movimientoDisparo()
+		  									self.movimientoDisparo2()
 		  									trump.iniciar()
 		  								}
 		  })
@@ -106,8 +113,20 @@ object config {
 	}
 	
 	method movimientoMisil(){
-		game.onTick(100, "movimiento",{ 
+		game.onTick(50, "movimiento",{ 
 			 misil.dirigido()
+		})
+	}
+	
+	method movimientoDisparo(){
+		game.onTick(40, "movimientod",{ 
+			 disparo.dirigido()
+		})
+	}
+	
+		method movimientoDisparo2(){
+		game.onTick(25, "movimientod2",{ 
+			 disparo2.dirigido()
 		})
 	}
 }

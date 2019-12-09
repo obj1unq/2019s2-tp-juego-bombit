@@ -108,6 +108,53 @@ object misil{
 	}
 }
 
+class Soldado {
+	var property position
+	method image() = "soladado.png"
+	method teEncontro(trump){}
+	method esAtravesable() = false
+}
+
+object disparo{
+	var property position = game.at(18, 9)
+	method image() = "bolita.png"
+	
+	method dirigido() {
+	if ( position == trump.position() or  position == game.at(1,9) ){
+		position = game.at(18, 9)
+	} else {  position = game.at(position.x()-1,9) }
+	
+	}
+	
+	method esAtravesable() = false  
+	
+	method teEncontro(trump){
+			 trump.estoyVivo(false)
+			 game.addVisual(fin)
+	}
+	
+}
+
+object disparo2{
+	var property position = game.at(18, 11)
+	method image() = "bolita.png"
+	
+	method dirigido() {
+	if ( position == trump.position() or  position == game.at(1,11) ){
+		position = game.at(18, 11)
+	} else {  position = game.at(position.x()-1,11) }
+	
+	}
+	
+	method esAtravesable() = false  
+	
+	method teEncontro(trump){
+			 trump.estoyVivo(false)
+			 game.addVisual(fin)
+	}
+	
+}
+
 
 //Representación de las imágenes para el inicio y el fin
 
