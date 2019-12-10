@@ -14,8 +14,7 @@ program bombIt {
 	
 	//Inicia el primer nivel
 	nivel1.iniciar()
+	game.schedule(1000, {game.sound("soundtrack1.mp3")})
 	game.start()
 	
-	//Inicia la reproduccion de la musica de fondo
-	game.sound("soundtrack1.mp3")
 }

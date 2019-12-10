@@ -48,7 +48,6 @@ object nivel2 {
 		game.addVisualIn(new Moneda(), game.at(16,2))
 		game.addVisualIn(new Moneda(), game.at(15,7))
 		game.addVisualIn(new Moneda(), game.at(14,14))
-		game.addVisualIn(new Moneda(), game.at(13,11))
 		game.addVisualIn(new Moneda(), game.at(9,11))
 		game.addVisualCharacterIn(trump , game.at(1,1))
 		trump.iniciar()
